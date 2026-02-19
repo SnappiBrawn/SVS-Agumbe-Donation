@@ -1,0 +1,411 @@
+<style>
+  /* ========================================
+        CENTRAL THEMING SYSTEM
+        Change colors here to update the whole site
+        ========================================
+        */
+  :root {
+    /* Palette provided in prompt */
+    --svs-light-bg: #e8f0e8; /* Light Green Background */
+    --svs-primary: #002b53; /* Dark Blue - Headings/Footer */
+    --svs-accent: #95b9b4; /* Muted Teal - Subtitles/Borders */
+    --svs-success: #0d9547; /* Vibrant Green - CTAs/Highlights */
+    --svs-white: #fcfdfc; /* Off-white - Cards/Content */
+
+    /* Typography */
+    --font-heading: "Noto Serif", serif;
+    --font-body: "Noto Sans", sans-serif;
+  }
+
+  /* General Resets & Typography */
+  body {
+    font-family: var(--font-body);
+    color: var(--svs-primary);
+    background-color: var(--svs-white);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--svs-primary);
+  }
+
+  /* Utility Classes for Theme Colors */
+  .text-primary-custom {
+    color: var(--svs-primary) !important;
+  }
+  .text-success-custom {
+    color: var(--svs-success) !important;
+  }
+  .bg-light-custom {
+    background-color: var(--svs-light-bg) !important;
+  }
+  .bg-primary-custom {
+    background-color: var(--svs-primary) !important;
+  }
+
+  /* Navbar */
+  .navbar {
+    background-color: var(--svs-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .navbar-brand {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--svs-primary);
+  }
+  .nav-link {
+    color: var(--svs-primary);
+    font-weight: 600;
+    margin-left: 1rem;
+    transition: color 0.3s;
+  }
+  .nav-link:hover {
+    color: var(--svs-success);
+  }
+  .btn-lang {
+    border: 1px solid var(--svs-primary);
+    color: var(--svs-primary);
+    border-radius: 20px;
+    padding: 0.25rem 1rem;
+  }
+
+  /* Hero Section - Renovation Focus */
+  #hero {
+    position: relative;
+    background-color: var(--svs-primary);
+    color: white;
+    overflow: hidden;
+  }
+  .hero-overlay {
+    background: linear-gradient(rgba(0, 43, 83, 0.5), rgba(0, 43, 83, 0.3));
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 100px 0;
+  }
+  .hero-title {
+    color: var(--svs-white);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  .btn-cta {
+    background-color: var(--svs-success);
+    color: white;
+    padding: 12px 30px;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    transition:
+      transform 0.2s,
+      background-color 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .btn-cta:hover {
+    background-color: #0b7a3a;
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  /* Stats Section */
+  .stat-card {
+    background: var(--svs-white);
+    border: 2px solid var(--svs-accent);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    height: 100%;
+    transition: transform 0.3s;
+  }
+  .stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--svs-success);
+  }
+  .stat-icon {
+    font-size: 2.5rem;
+    color: var(--svs-success);
+    margin-bottom: 1rem;
+  }
+
+  /* Principal Section */
+  .principal-img-container {
+    border-right: 10px solid var(--svs-accent);
+    border-bottom: 10px solid var(--svs-accent);
+    padding-right: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+  .quote-icon {
+    font-size: 4rem;
+    color: var(--svs-light-bg);
+    line-height: 1;
+  }
+
+  /* Gallery */
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    height: 250px;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+  .gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 43, 83, 0.8);
+    color: white;
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+  }
+  .gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+  }
+
+  /* Donation Tracker Component */
+
+  .tracker-card {
+    background-color: var(--svs-white);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 43, 83, 0.1);
+    border-top: 5px solid var(--svs-success);
+  }
+
+  .gap-display {
+    text-align: center;
+    background: rgba(0, 43, 83, 0.05);
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: 1px solid var(--svs-accent);
+  }
+
+  .gap-label {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--svs-primary);
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .gap-amount {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--svs-primary);
+    line-height: 1;
+  }
+
+  .progress-wrapper {
+    height: 30px;
+    background-color: #d1d9d1;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background-color: var(--svs-success);
+    border-radius: 50px;
+    transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);
+
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 40px 40px;
+    animation: progress-stripes 2s linear infinite;
+  }
+
+  @keyframes progress-stripes {
+    0% {
+      background-position: 40px 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    color: var(--svs-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  .stat-value {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .gap-amount {
+      font-size: 2rem;
+    }
+    .stat-value {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* Cost Table */
+  .cost-table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    width: 100%;
+  }
+  .cost-table th {
+    text-transform: uppercase;
+    color: var(--svs-accent);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 10px;
+  }
+  .cost-row {
+    background: var(--svs-white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+  }
+  .cost-row td {
+    padding: 20px;
+    border-top: 1px solid var(--svs-light-bg);
+    border-bottom: 1px solid var(--svs-light-bg);
+  }
+  .cost-row td:first-child {
+    border-left: 5px solid var(--svs-success);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-weight: bold;
+  }
+  .cost-row td:last-child {
+    border-right: 1px solid var(--svs-light-bg);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-align: right;
+    color: var(--svs-primary);
+    font-weight: bold;
+  }
+
+  /* Footer */
+  footer {
+    background-color: var(--svs-primary);
+    color: var(--svs-white);
+    padding: 60px 0 20px;
+  }
+  footer a {
+    color: var(--svs-accent);
+    text-decoration: none;
+  }
+  footer .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--svs-accent);
+    color: white;
+  }
+  footer .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  footer .btn-submit {
+    background-color: var(--svs-success);
+    color: white;
+    border: none;
+  }
+
+  /* QR Modal */
+  .modal-header {
+    background-color: var(--svs-primary);
+    color: white;
+  }
+  .qr-container {
+    border: 2px dashed var(--svs-success);
+    padding: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    background: var(--svs-light-bg);
+  }
+
+  /* Modal Carousel responsiveness */
+
+  .modal-body .carousel-item img,
+  .modal-body .carousel-item video {
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+
+    background-color: var(--svs-light-bg);
+    margin: 0 auto; /* Centers the media */
+  }
+
+  @media (max-width: 767px) {
+    .modal-body .carousel-item img,
+    .modal-body .carousel-item video {
+      width: 60vw !important;
+      height: auto;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .modal-body .carousel-item img,
+    .modal-body .carousel-item video {
+      max-height: 60vh !important;
+      width: 100%;
+    }
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    .cost-row {
+      display: block;
+      margin-bottom: 15px;
+    }
+    .cost-row td {
+      display: block;
+      width: 100%;
+      text-align: left !important;
+      padding: 10px 15px;
+      border: none;
+    }
+    .cost-row td:first-child {
+      border-left: none;
+      border-top: 5px solid var(--svs-success);
+    }
+  }
+</style>

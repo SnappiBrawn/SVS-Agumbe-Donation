@@ -1,16 +1,30 @@
 /* balance tracker counter */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const TARGET_AMOUNT = 6194264;
-  const RAISED_AMOUNT = parseInt(document.getElementById("raised-amount").dataset.value);
+  let RAISED_AMOUNT = parseInt(document.getElementById("raised-amount").dataset.fallbackValue);
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzOLj5wZh50kNrXl34liEmBWR6kkirVNBiw6wpwJILa0SxHLgKlmOJuvtoSrFX9iW4xOw/exec?action=getTotal";
+
+  try {
+    const response = await fetch(scriptURL, { method: "GET" });
+    const data = await response.json();
+    if (data.status === "success" && typeof data.total === "number") {
+      RAISED_AMOUNT = data.total;
+    }
+  } catch (err) {}
+
   const gap = TARGET_AMOUNT - RAISED_AMOUNT;
   const percentage = Math.min((RAISED_AMOUNT / TARGET_AMOUNT) * 100, 100);
+
   const formatMoney = (amount) => {
     return "₹" + amount.toLocaleString("en-IN");
   };
+
   document.getElementById("goal-amount").innerText = formatMoney(TARGET_AMOUNT);
+
   setTimeout(() => {
     document.getElementById("progress-fill").style.width = percentage + "%";
   }, 300);
+
   const animateValue = (id, start, end, duration) => {
     const obj = document.getElementById(id);
     let startTimestamp = null;
@@ -33,11 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const percentObj = document.getElementById("percentage-label");
   let pStart = 0;
-  const pTimer = setInterval(() => {
-    pStart++;
-    percentObj.innerText = pStart + "%";
-    if (pStart >= Math.floor(percentage)) clearInterval(pTimer);
-  }, 2000 / percentage);
+
+  if (Math.floor(percentage) > 0) {
+    const pTimer = setInterval(() => {
+      pStart++;
+      percentObj.innerText = pStart + "%";
+      if (pStart >= Math.floor(percentage)) clearInterval(pTimer);
+    }, 2000 / percentage);
+  } else {
+    percentObj.innerText = "0%";
+  }
 });
 
 /* contact form post request */

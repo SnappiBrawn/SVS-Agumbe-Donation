@@ -188,7 +188,22 @@
   .gallery-item:hover .gallery-caption {
     transform: translateY(0);
   }
-  
+  .gallery-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 123, 85, 0.85);
+    color: white;
+    font-size: 1.25rem;
+    pointer-events: none;
+  }
   .carousel-control-next-icon, .carousel-control-prev-icon{
     background-color: var(--svs-primary);
     padding: 30px 0;

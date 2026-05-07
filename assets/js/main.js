@@ -59,6 +59,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+/* show batch congrats popup on page load */
+document.addEventListener("DOMContentLoaded", function () {
+  const modalEl = document.getElementById("batchCongratsModal");
+  if (!modalEl) return;
+  const congratsModal = new bootstrap.Modal(modalEl, { keyboard: true });
+  congratsModal.show();
+});
+
 /* contact form post request */
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("contactForm");

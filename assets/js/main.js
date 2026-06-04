@@ -65,6 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!modalEl) return;
   const congratsModal = new bootstrap.Modal(modalEl, { keyboard: true });
   congratsModal.show();
+    setTimeout(() => {
+    congratsModal.hide();
+  }, 5000);
 });
 
 /* contact form post request */

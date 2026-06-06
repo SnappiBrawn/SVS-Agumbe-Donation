@@ -63,9 +63,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.addEventListener("DOMContentLoaded", function () {
   const modalEl = document.getElementById("batchCongratsModal");
   if (!modalEl) return;
+
+  const path = window.location.pathname || "";
+  const isHome = path === "/" || path === "/index.html";
+  if (!isHome) return;
+
   const congratsModal = new bootstrap.Modal(modalEl, { keyboard: true });
   congratsModal.show();
-    setTimeout(() => {
+  setTimeout(() => {
     congratsModal.hide();
   }, 5000);
 });

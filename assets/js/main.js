@@ -59,20 +59,39 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-/* show batch congrats popup on page load */
+/* batch congrats popup is now opened from the navbar button */
 document.addEventListener("DOMContentLoaded", function () {
   const modalEl = document.getElementById("batchCongratsModal");
   if (!modalEl) return;
 
-  const path = window.location.pathname || "";
-  const isHome = path === "/" || path === "/index.html";
-  if (!isHome) return;
+  const triggerButton = document.querySelector("[data-bs-target='#batchCongratsModal']");
+  if (!triggerButton) return;
 
-  const congratsModal = new bootstrap.Modal(modalEl, { keyboard: true });
-  congratsModal.show();
-  setTimeout(() => {
-    congratsModal.hide();
-  }, 5000);
+  triggerButton.addEventListener("click", function () {
+    const congratsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+    congratsModal.show();
+  });
+});
+
+/* alumni registration popup auto-opens on page load and closes after 5 seconds */
+document.addEventListener("DOMContentLoaded", function () {
+  const alumniModalEl = document.getElementById("alumniSignupModal");
+  if (!alumniModalEl) return;
+
+  const alumniModal = bootstrap.Modal.getOrCreateInstance(alumniModalEl);
+  alumniModal.show();
+
+  const hideTimer = window.setTimeout(() => {
+    alumniModal.hide();
+  }, 10000);
+
+  alumniModalEl.addEventListener(
+    "hidden.bs.modal",
+    () => {
+      window.clearTimeout(hideTimer);
+    },
+    { once: true }
+  );
 });
 
 /* contact form post request */

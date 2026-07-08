@@ -7,16 +7,12 @@ layout: compress
   {% include head.html %}
   <body>
     {% include navbar.html %}
-    <button type="button" class="congrats-fab" data-bs-toggle="modal" data-bs-target="#batchCongratsModal" aria-label="Celebrate the outgoing Class X batch">
-      <img src="{{'/assets/img/X_result/Class_X_cent_1.jpeg' | relative_url}}" alt="Class X results" />
-      <span class="fab-label">100% Results</span>
-    </button>
 
     <div class="modal fade" id="batchCongratsModal" tabindex="-1" aria-labelledby="batchCongratsModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content congrats-modal-card shadow-sm">
           <div class="modal-header congrats-modal-header border-0 px-3 py-2">
-            <h5 class="modal-title text-primary-custom" id="batchCongratsModalLabel">Class X Batch 2025-26</h5>
+            <h5 class="modal-title text-white" id="batchCongratsModalLabel">Class X Batch 2025-26</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body p-0">
@@ -41,6 +37,30 @@ layout: compress
                   <a href="https://www.facebook.com/profile.php?id=61584552479179" class="btn btn-cta" data-bs-dismiss="modal" target="_blank">Congratulate</a>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="alumniSignupModal" tabindex="-1" aria-labelledby="alumniSignupModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content congrats-modal-card shadow-sm">
+          <div class="modal-header congrats-modal-header border-0 px-3 py-2">
+            <h5 class="modal-title text-white" id="alumniSignupModalLabel">Welcome, Alumni!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <p class="fs-4 fw-bold mb-3 text-success-custom">Join the SVS Vedike Alumni Association</p>
+            <p class="mb-3">We are delighted to welcome you back to your alma mater. To register as an alumni member, please download the application form, fill it carefully, and mail the completed form to the school office for processing.</p>
+            <ol class="mb-4 ps-3">
+              <li>Download the application form.</li>
+              <li>Fill in all the required details completely.</li>
+              <li>Post the completed form to the school office OR email a scanned copy to <a href="mailto:svsagumbe@gmail.com">svsagumbe@gmail.com</a></li>
+            </ol>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-cta" href="{{'/assets/SVS VEDIKE APPLICATION FORM-d497fde8.pdf' | relative_url}}" download>Download Application Form</a>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>

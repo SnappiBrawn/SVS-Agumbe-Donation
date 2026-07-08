@@ -78,6 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const alumniModalEl = document.getElementById("alumniSignupModal");
   if (!alumniModalEl) return;
 
+  const path = window.location.pathname || "";
+  const isHome = path === "/" || path === "/index.html";
+  if (!isHome) return;
+
   const alumniModal = bootstrap.Modal.getOrCreateInstance(alumniModalEl);
   alumniModal.show();
 

@@ -1,10 +1,11 @@
+{% assign t = site.data.translations[site.active_lang] %}
 <!-- Stats / Story Section -->
 <section id="our-story" class="py-5 bg-light-custom">
   <div class="container py-4">
     <div class="row text-center mb-5">
       <div class="col-lg-8 mx-auto">
-        <h2>Our Story</h2>
-        <p class="text-muted">Serving the Agumbe community for over 60 years.</p>
+        <h2>{{ t.story.title }}</h2>
+        <p class="text-muted">{{ t.story.subtitle }}</p>
       </div>
     </div>
 
@@ -12,22 +13,22 @@
       <div class="col-md-4">
         <div class="stat-card">
           <i class="bi bi-building stat-icon"></i>
-          <h4>Established 1965</h4>
-          <p class="small text-muted">Founded with a vision to bring quality education to the rainforest region.</p>
+          <h4>{{ t.story.card1_title }}</h4>
+          <p class="small text-muted">{{ t.story.card1_desc }}</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="stat-card">
           <i class="bi bi-people-fill stat-icon"></i>
-          <h4>75 Students</h4>
-          <p class="small text-muted">Currently educating bright minds from Agumbe and surrounding villages.</p>
+          <h4>{{ t.story.card2_title }}</h4>
+          <p class="small text-muted">{{ t.story.card2_desc }}</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="stat-card">
           <i class="bi bi-book-half stat-icon"></i>
-          <h4>Classes VIII - X</h4>
-          <p class="small text-muted">Providing critical high school education foundation.</p>
+          <h4>{{ t.story.card3_title }}</h4>
+          <p class="small text-muted">{{ t.story.card3_desc }}</p>
         </div>
       </div>
     </div>

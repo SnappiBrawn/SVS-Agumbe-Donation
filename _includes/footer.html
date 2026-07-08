@@ -1,10 +1,11 @@
+{% assign t = site.data.translations[site.active_lang] %}
 <!-- Footer / Contact -->
 <footer id="contact">
   <div class="container">
     <div class="row g-5">
       <!-- Contact Info -->
       <div class="col-lg-4">
-        <h4 class="text-white mb-4">SVS High School</h4>
+        <h4 class="text-white mb-4">{{ t.title }}</h4>
         <p class="small opacity-75">
           Main Road, Agumbe,<br />
           Shivamogga District, Karnataka - 577411
@@ -20,18 +21,18 @@
 
       <!-- Contact Form -->
       <div class="col-lg-4">
-        <h5 class="text-white mb-3">Leave us a message</h5>
+        <h5 class="text-white mb-3">{{ t.footer.message_title }}</h5>
         <form id="contactForm">
           <div class="mb-2">
-            <input type="text" name="name" class="form-control form-control-sm" placeholder="Your Name" required />
+            <input type="text" name="name" class="form-control form-control-sm" placeholder="{{ t.footer.name_placeholder }}" required />
           </div>
           <div class="mb-2">
-            <input type="email" name="email" class="form-control form-control-sm" placeholder="Your Email" required />
+            <input type="email" name="email" class="form-control form-control-sm" placeholder="{{ t.footer.email_placeholder }}" required />
           </div>
           <div class="mb-2">
-            <textarea name="message" class="form-control form-control-sm" rows="3" placeholder="Message" required></textarea>
+            <textarea name="message" class="form-control form-control-sm" rows="3" placeholder="{{ t.footer.message_placeholder }}" required></textarea>
           </div>
-          <button type="submit" id="submitBtn" class="btn btn-submit btn-sm w-100">Send Message</button>
+          <button type="submit" id="submitBtn" class="btn btn-submit btn-sm w-100">{{ t.footer.send_btn }}</button>
 
           <div id="formStatus" class="mt-2 text-center" style="font-size: 0.85rem; display: none"></div>
         </form>
@@ -39,7 +40,7 @@
 
       <!-- Map -->
       <div class="col-lg-4">
-        <h5 class="text-white mb-3">Locate Us</h5>
+        <h5 class="text-white mb-3">{{ t.footer.locate }}</h5>
         <div style="width: 100%; height: 200px; background: #333; border-radius: 4px; overflow: hidden">
           <!-- Embed Google Map -->
           <iframe
@@ -58,12 +59,12 @@
 
     <div class="row align-items-center">
       <div class="col-md-6 text-center text-md-start">
-        <p class="small mb-0 opacity-50">&copy; 2026 SVS High School, Agumbe. All Rights Reserved.</p>
+        <p class="small mb-0 opacity-50">&copy; 2026 {{ t.title }}. {{ t.footer.rights }}</p>
       </div>
       <div class="col-md-6 text-center text-md-end">
         <p class="small mb-0 opacity-50">
-          Conceptualized by Sri P. M. Venugopal Hebbar, <br/> Dr. Govindaraj Pandith T. G.<br />
-          Developed by <a href="https://snaplogix.in" target="_blank" style="font-weight: 900; color: white;">Snaplogix</a>
+          {{ t.footer.concept }}<br />
+          {{ t.footer.developed }} <a href="https://snaplogix.in" target="_blank" style="font-weight: 900; color: white;">Snaplogix</a>
         </p>
       </div>
     </div>

@@ -1,3 +1,4 @@
+{% assign t = site.data.translations[site.active_lang] %}
 <!-- Hero Section -->
 <section id="hero">
   <!-- Background Image Placeholder using CSS linear gradient + URL -->
@@ -15,14 +16,14 @@
   <div class="container hero-content text-center">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <span class="badge bg-light text-dark mb-3 px-3 py-2 rounded-pill">Phase 1 Renovation in Progress</span>
-        <h1 class="hero-title">Help Rebuild the Legacy of SVS Agumbe</h1>
+        <span class="badge bg-light text-dark mb-3 px-3 py-2 rounded-pill">{{ t.hero.badge }}</span>
+        <h1 class="hero-title">{{ t.hero.title }}</h1>
         <p class="lead mb-5 text-light opacity-75">
-          Established in 1965, our walls have sheltered thousands of dreams. Today, those walls need your support. Join our network of alumni in restoring our beloved school.
+          {{ t.hero.desc }}
         </p>
         <div class="d-flex justify-content-center gap-3">
-          <a class="btn btn-cta btn-lg" href="/donate">Donate Now</a>
-          <a href="#renovation-details" class="btn btn-outline-light btn-lg rounded-pill px-4"> View Progress </a>
+          <a class="btn btn-cta btn-lg" href="{{ '/donate' | relative_url }}">{{ t.hero.donate_btn }}</a>
+          <a href="#renovation-details" class="btn btn-outline-light btn-lg rounded-pill px-4"> {{ t.hero.progress_btn }} </a>
         </div>
       </div>
     </div>

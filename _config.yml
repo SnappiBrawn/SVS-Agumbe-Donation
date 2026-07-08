@@ -27,10 +27,19 @@ url: "https://svsagumbe.org" # the base hostname & protocol for your site, e.g. 
 twitter_username: jekyllrb
 github_username:  jekyll
 
+# Supported languages and defaults
+languages: ["en", "kn"]
+default_lang: "en"
+parallel_localization: false
+
+# Directories/files to exclude from being duplicated for each language
+exclude_from_localization: ["assets", "css", "javascript", "CNAME", ".jekyll-cache"]
+
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-polyglot
 
 # Exclude from processing.
 # The following items will not be processed, by default.

@@ -1,8 +1,9 @@
+{% assign t = site.data.translations[site.active_lang] %}
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="{{ '/' | relative_url }}">
       <image src="{{'/assets/SVS.jpg' | relative_url}}" height="75">
-      SVS High School, Agumbe
+      {{ t.title }}
       <!-- <span style="font-size: 0.9rem; display: block; font-weight: 400; color: var(--svs-accent)"></span> -->
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -10,26 +11,32 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item"><a class="nav-link" href="/#our-story">Our Story</a></li>
-        <li class="nav-item"><a class="nav-link" href="/#renovation-details">Renovation</a></li>
-        <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ '/' | relative_url }}#our-story">{{ t.nav.story }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ '/' | relative_url }}#renovation-details">{{ t.nav.renovation }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ '/' | relative_url }}#contact">{{ t.nav.contact }}</a></li>
         <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
           <button type="button" class="btn btn-sm congrats-nav-trigger" data-bs-toggle="modal" data-bs-target="#batchCongratsModal">
-            100% Results <i class="bi bi-stars ms-1"></i>
+            {{ t.nav.results_badge }} <i class="bi bi-stars ms-1"></i>
           </button>
         </li>
         <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
           <button type="button" class="btn btn-sm alumni-nav-download" data-bs-toggle="modal" data-bs-target="#alumniSignupModal">
-            Alumni Registration <i class="bi bi-person-plus ms-1"></i>
+            {{ t.nav.alumni_reg }} <i class="bi bi-person-plus ms-1"></i>
           </button>
         </li>
         <li class="nav-item ms-lg-3">
           <!-- <button class="btn btn-cta btn-sm" data-bs-toggle="modal" data-bs-target="#paymentModal">Contribute <i class="bi bi-heart-fill ms-1"></i></button> -->
-          <a class="btn btn-cta btn-sm" href="/donate">Contribute <i class="bi bi-heart-fill ms-1"></i></a>
+          <a class="btn btn-cta btn-sm" href="{{ '/donate' | relative_url }}">{{ t.nav.contribute }} <i class="bi bi-heart-fill ms-1"></i></a>
         </li>
-        <!-- <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
-          <button class="btn btn-lang">ಕನ್ನಡ</button>
-        </li> -->
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          {% if site.active_lang == 'en' %}
+            <a class="btn btn-lang" {% static_href %}href="{{ site.baseurl }}/kn{{ page.url }}"{% endstatic_href %}>ಕನ್ನಡ</a>
+          {% else %}
+            {% assign en_url = page.url | replace_first: '/kn', '' %}
+            {% if en_url == '' %}{% assign en_url = '/' %}{% endif %}
+            <a class="btn btn-lang" {% static_href %}href="{{ site.baseurl }}{{ en_url }}"{% endstatic_href %}>English</a>
+          {% endif %}
+        </li>
       </ul>
     </div>
   </div>

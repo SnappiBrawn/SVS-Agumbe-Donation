@@ -1,16 +1,17 @@
+{% assign t = site.data.translations[site.active_lang] %}
 <section id="donation-tracker" class="py-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
         <div class="tracker-card p-4 p-md-5">
           <div class="text-center mb-4">
-            <h2 class="section-title mb-2">Help Us Rebuild Our Legacy</h2>
-            <p class="text-muted">Every rupee brings us closer to a modern campus.</p>
+            <h2 class="section-title mb-2">{{ t.tracker.rebuild }}</h2>
+            <p class="text-muted">{{ t.tracker.rebuild_desc }}</p>
           </div>
 
           <div class="d-flex justify-content-center align-items-center mb-3">
             <div class="gap-display">
-              <span class="gap-label">Amount Needed to Reach Goal</span>
+              <span class="gap-label">{{ t.tracker.amount_needed }}</span>
               <div class="gap-amount" id="gap-amount">₹0</div>
             </div>
           </div>
@@ -19,21 +20,21 @@
             <div class="progress-fill" id="progress-fill" role="progressbar" style="width: 0%"></div>
           </div>
 
-          <div class="text-end mb-4"><span class="fw-bold text-success-custom" id="percentage-label">0%</span> Funded</div>
+          <div class="text-end mb-4"><span class="fw-bold text-success-custom" id="percentage-label">0%</span> {{ t.tracker.funded }}</div>
 
           <div class="row text-center border-top pt-4">
             <div class="col-6 col-md-6 border-end">
-              <h5 class="stat-label">Raised So Far</h5>
+              <h5 class="stat-label">{{ t.tracker.raised }}</h5>
               <div class="stat-value text-success-custom" id="raised-amount" data-fallback-value="500001">₹0</div>
             </div>
             <div class="col-6 col-md-6">
-              <h5 class="stat-label">Total Goal</h5>
+              <h5 class="stat-label">{{ t.tracker.target }}</h5>
               <div class="stat-value text-primary-custom" id="goal-amount">₹0</div>
             </div>
           </div>
 
           <div class="text-center mt-5">
-            <a class="btn btn-cta btn-lg shadow" href="/donate">Make a Donation <i class="fas fa-heart ms-2"></i></a>
+            <a class="btn btn-cta btn-lg shadow" href="{{ '/donate' | relative_url }}">{{ t.tracker.make_donation }} <i class="fas fa-heart ms-2"></i></a>
           </div>
         </div>
       </div>

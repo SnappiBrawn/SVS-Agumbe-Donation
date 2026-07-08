@@ -3,17 +3,19 @@ layout: compress
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="{{ site.active_lang }}">
   {% include head.html %}
   <body>
     {% include navbar.html %}
+
+    {% assign t = site.data.translations[site.active_lang] %}
 
     <div class="modal fade" id="batchCongratsModal" tabindex="-1" aria-labelledby="batchCongratsModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content congrats-modal-card shadow-sm">
           <div class="modal-header congrats-modal-header border-0 px-3 py-2">
-            <h5 class="modal-title text-white" id="batchCongratsModalLabel">Class X Batch 2025-26</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title text-white" id="batchCongratsModalLabel">{{ t.modals.results_title }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ t.modals.close }}"></button>
           </div>
           <div class="modal-body p-0">
             <div class="congrats-modal-split">
@@ -30,11 +32,11 @@ layout: compress
                 </div>
               </div>
               <div class="congrats-modal-copy p-4"> 
-                <p class="fs-4 fw-bold mb-3 text-success-custom">SSLC 100% Results Achieved!</p>
-                <p class="mb-3">A proud salute to the outgoing Class X batch, Academic Year <strong>2025-26</strong>. Your dedication and hard work have brought this outstanding achievement to our school and community.</p>
-                <p class="mb-0">Congratulations to every student, teacher, and family involved. May this milestone inspire many more successes ahead.</p>
+                <p class="fs-4 fw-bold mb-3 text-success-custom">{{ t.modals.results_badge }}</p>
+                <p class="mb-3">{{ t.modals.results_desc1 }}</p>
+                <p class="mb-0">{{ t.modals.results_desc2 }}</p>
                 <div class="d-flex justify-content-center mt-4">
-                  <a href="https://www.facebook.com/profile.php?id=61584552479179" class="btn btn-cta" data-bs-dismiss="modal" target="_blank">Congratulate</a>
+                  <a href="https://www.facebook.com/profile.php?id=61584552479179" class="btn btn-cta" data-bs-dismiss="modal" target="_blank">{{ t.modals.congratulate_btn }}</a>
                 </div>
               </div>
             </div>
@@ -47,20 +49,20 @@ layout: compress
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content congrats-modal-card shadow-sm">
           <div class="modal-header congrats-modal-header border-0 px-3 py-2">
-            <h5 class="modal-title text-white" id="alumniSignupModalLabel">Welcome, Alumni!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title text-white" id="alumniSignupModalLabel">{{ t.modals.alumni_title }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ t.modals.close }}"></button>
           </div>
           <div class="modal-body p-4">
-            <p class="fs-4 fw-bold mb-3 text-success-custom">Join the SVS Vedike Alumni Association</p>
-            <p class="mb-3">We are delighted to welcome you back to your alma mater. To register as an alumni member, please download the application form, fill it carefully, and mail the completed form to the school office for processing.</p>
+            <p class="fs-4 fw-bold mb-3 text-success-custom">{{ t.modals.alumni_sub }}</p>
+            <p class="mb-3">{{ t.modals.alumni_desc }}</p>
             <ol class="mb-4 ps-3">
-              <li>Download the application form.</li>
-              <li>Fill in all the required details completely.</li>
-              <li>Post the completed form to the school office OR email a scanned copy to <a href="mailto:svsagumbe@gmail.com">svsagumbe@gmail.com</a></li>
+              <li>{{ t.modals.alumni_step1 }}</li>
+              <li>{{ t.modals.alumni_step2 }}</li>
+              <li>{{ t.modals.alumni_step3 | replace: 'svsagumbe@gmail.com', '<a href="mailto:svsagumbe@gmail.com">svsagumbe@gmail.com</a>' }}</li>
             </ol>
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-cta" href="{{'/assets/SVS VEDIKE APPLICATION FORM-d497fde8.pdf' | relative_url}}" download>Download Application Form</a>
-              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+              <a class="btn btn-cta" href="{{'/assets/SVS VEDIKE APPLICATION FORM-d497fde8.pdf' | relative_url}}" download>{{ t.modals.alumni_download }}</a>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ t.modals.close }}</button>
             </div>
           </div>
         </div>

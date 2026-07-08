@@ -68,6 +68,7 @@
 }
 </style>
 
+{% assign t = site.data.translations[site.active_lang] %}
 <section class="container my-5" id="donation-tracker">
   <div class="row justify-content-center">
     <div class="col-lg-10">
@@ -75,12 +76,12 @@
         
         <div class="row align-items-center mb-4">
           <div class="col-md-8">
-            <h2 class="mb-2">Phase 1 Renovation Goal</h2>
-            <p class="text-muted mb-0">Help us rebuild the science labs and restrooms.</p>
+            <h2 class="mb-2">{{ t.tracker.goal_title }}</h2>
+            <p class="text-muted mb-0">{{ t.tracker.goal_desc }}</p>
           </div>
           <div class="col-md-4 text-md-end text-start mt-3 mt-md-0">
              <div class="countdown-badge">
-              <span class="d-block small text-uppercase fw-bold">Still Needed</span>
+              <span class="d-block small text-uppercase fw-bold">{{ t.tracker.needed }}</span>
               <span class="h3 fw-bold mb-0" id="amount-needed">₹0</span>
             </div>
           </div>
@@ -94,18 +95,18 @@
 
         <div class="d-flex justify-content-between align-items-center mt-3">
           <div>
-            <span class="d-block small text-muted">Raised So Far</span>
+            <span class="d-block small text-muted">{{ t.tracker.raised }}</span>
             <span class="h4 text-success-custom fw-bold" id="amount-raised">₹0</span>
           </div>
           <div class="text-end">
-            <span class="d-block small text-muted">Target Goal</span>
+            <span class="d-block small text-muted">{{ t.tracker.target }}</span>
             <span class="h4 text-primary-custom fw-bold" id="amount-goal">₹5,00,000</span>
           </div>
         </div>
 
         <div class="text-center mt-4">
           <button class="btn-cta" onclick="window.location.href='#donate-modal'">
-            Contribute Now
+            {{ t.tracker.contribute }}
           </button>
         </div>
 

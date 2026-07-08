@@ -3,43 +3,41 @@ layout: default
 permalink: /donate
 ---
 
+{% assign t = site.data.translations[site.active_lang] %}
 <div class="container" style="max-width: 600px">
   <div id="step-1-intake" class="tracker-card p-4 p-md-5 mb-4">
-    <h2 class="text-primary-custom mb-3">Support Our Project</h2>
-    <p class="text-muted mb-4">Tell us a little about yourself so we can properly express our gratitude for your contribution.</p>
+    <h2 class="text-primary-custom mb-3">{{ t.donate_page.support_project }}</h2>
+    <p class="text-muted mb-4">{{ t.donate_page.intake_desc }}</p>
 
     <form id="intake-form">
       <div class="mb-3">
-        <label class="form-label font-weight-bold">Full Name</label>
+        <label class="form-label font-weight-bold">{{ t.donate_page.full_name }}</label>
         <input type="text" class="form-control" id="donorName" required />
       </div>
       <div class="row mb-3">
         <div class="col-md-6">
-          <label class="form-label">Location (City)</label>
+          <label class="form-label">{{ t.donate_page.location }}</label>
           <input type="text" class="form-control" id="donorLocation" required />
         </div>
         <div class="col-md-6 mt-3 mt-md-0">
-          <label class="form-label">Occupation / Batch</label>
+          <label class="form-label">{{ t.donate_page.occupation }}</label>
           <input type="text" class="form-control" id="donorOccupation" required />
         </div>
       </div>
       <div class="mb-4">
-        <label class="form-label text-success-custom fw-bold">Intended Donation Amount (₹)</label>
+        <label class="form-label text-success-custom fw-bold">{{ t.donate_page.amount }}</label>
         <input type="number" class="form-control border-success" id="donorAmount" required />
       </div>
-      <button type="submit" class="btn-cta w-100">Continue to Payment</button>
+      <button type="submit" class="btn-cta w-100">{{ t.donate_page.continue_btn }}</button>
     </form>
   </div>
 
   <div id="step-2-payment" class="tracker-card p-4 p-md-5 mb-4" style="display: none">
-    <h2 class="text-primary-custom mb-2">Scan & Donate</h2>
-    <p>
-      Please scan the QR code below using any UPI app. <br /><strong>NOTE:</strong> To ensure we can trace your transaction to you, include the reference code below into the "Add a Note" or "Remarks"
-      section of your transaction.
-    </p>
+    <h2 class="text-primary-custom mb-2">{{ t.donate_page.scan_donate }}</h2>
+    <p>{{ t.donate_page.scan_desc }}</p>
 
     <div class="gap-display my-4">
-      <span class="gap-label">Your Unique Reference Code</span>
+      <span class="gap-label">{{ t.donate_page.ref_code_label }}</span>
       <div class="gap-amount text-success-custom" id="display-ref-code">DONOR-XXXX</div>
     </div>
 
@@ -49,15 +47,15 @@ permalink: /donate
         <a href="{{'/assets/img/qr-clean.jpg' | relative_url}}" download="qr.jpg" class="position-absolute bottom-0 end-0 bg-success text-white px-3 py-1 rounded"> ⇩ </a> 
       </div>
       <p class="font-monospace small p-2 d-inline-block">
-        Upload QR to GPay/PhonePe for Donation/Membership application form fee.
+        {{ t.donate_page.qr_subtext }}
       </p>
       <div class="text-center px-3">
-        <h6>Bank Transfer Details:</h6>
+        <h6>{{ t.donate_page.bank_title }}</h6>
         <ul class="list-unstyled small text-muted">
-          <li><strong>Name:</strong> AGUMBE SHIKSHANA SAMSTHE (R)</li>
-          <li><strong>Bank:</strong> Canara Bank, Agumbe Branch</li>
-          <li><strong>Account No:</strong>19092200005482</li>
-          <li><strong>IFSC:</strong>CNRB0011909</li>
+          <li><strong>{{ t.donate_page.bank_name }}</strong> AGUMBE SHIKSHANA SAMSTHE (R)</li>
+          <li><strong>{{ t.donate_page.bank_branch }}</strong> Canara Bank, Agumbe Branch</li>
+          <li><strong>{{ t.donate_page.bank_acc }}</strong> 19092200005482</li>
+          <li><strong>{{ t.donate_page.bank_ifsc }}</strong> CNRB0011909</li>
         </ul>
       </div>
       <p class="font-monospace small bg-light p-2 d-inline-block rounded border">
@@ -68,30 +66,39 @@ permalink: /donate
     <hr />
 
     <div class="text-center mt-4">
-      <p class="text-muted small mb-2">Did you complete the transfer or forget the code?</p>
-      <button type="button" class="btn btn-outline-secondary rounded-pill px-4" id="btn-show-claim">Verify Donation</button>
+      <p class="text-muted small mb-2">{{ t.donate_page.verify_subtext }}</p>
+      <button type="button" class="btn btn-outline-secondary rounded-pill px-4" id="btn-show-claim">{{ t.donate_page.verify_btn }}</button>
     </div>
   </div>
 
   <div id="step-3-claim" class="tracker-card p-4 p-md-5" style="display: none">
-    <h3 class="text-primary-custom mb-3">Claim Your Donation</h3>
-    <p class="text-muted mb-4">If you forgot to add the reference code, paste your transaction ID here so we can match it manually.</p>
+    <h3 class="text-primary-custom mb-3">{{ t.donate_page.claim_title }}</h3>
+    <p class="text-muted mb-4">{{ t.donate_page.claim_desc }}</p>
 
     <form id="claim-form">
       <div class="mb-3">
-        <label class="form-label">Email Address</label>
+        <label class="form-label">{{ t.donate_page.email_label }}</label>
         <input type="email" id="claimEmail" class="form-control" required />
       </div>
       <div class="mb-4">
-        <label class="form-label">Bank Transaction ID (UTR)</label>
+        <label class="form-label">{{ t.donate_page.utr_label }}</label>
         <input type="text" id="claimUtr" class="form-control border-primary" placeholder="e.g., 312345678901" required />
       </div>
-      <button type="submit" class="btn-cta w-100">Verify Transaction</button>
+      <button type="submit" class="btn-cta w-100">{{ t.donate_page.claim_btn }}</button>
     </form>
   </div>
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const JS_TRANSLATIONS = {
+      processing: "{{ t.js.processing }}",
+      submitting: "{{ t.js.submitting }}",
+      issue: "{{ t.js.issue }}",
+      network_error: "{{ t.js.network_error }}",
+      success: "{{ t.js.success }}",
+      connect_error: "{{ t.js.connect_error }}"
+    };
+
     const intakeForm = document.getElementById("intake-form");
     const claimForm = document.getElementById("claim-form");
     const step1 = document.getElementById("step-1-intake");
@@ -105,7 +112,7 @@ permalink: /donate
 
       const submitBtn = intakeForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerText;
-      submitBtn.innerText = "Processing...";
+      submitBtn.innerText = JS_TRANSLATIONS.processing;
       submitBtn.disabled = true;
 
       const randomCode = Math.floor(10000 + Math.random() * 90000);
@@ -136,11 +143,11 @@ permalink: /donate
 
           step2.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
-          alert("There was an issue processing your request. Please try again.");
+          alert(JS_TRANSLATIONS.issue);
         }
       } catch (error) {
         console.error("Network Error:", error);
-        alert("Unable to connect. Please check your internet and try again.");
+        alert(JS_TRANSLATIONS.network_error);
       } finally {
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
@@ -157,7 +164,7 @@ permalink: /donate
 
       const submitBtn = claimForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerText;
-      submitBtn.innerText = "Submitting...";
+      submitBtn.innerText = JS_TRANSLATIONS.submitting;
       submitBtn.disabled = true;
 
       const claimData = {
@@ -174,14 +181,14 @@ permalink: /donate
         });
 
         if (response.ok) {
-          alert("Thank you! Your transaction ID has been recorded. We will verify and update your status shortly.");
+          alert(JS_TRANSLATIONS.success);
           location.reload();
         } else {
-          alert("There was an issue processing your request. Please try again.");
+          alert(JS_TRANSLATIONS.issue);
         }
       } catch (error) {
         console.error("Fetch error:", error);
-        alert("Unable to connect to the server.");
+        alert(JS_TRANSLATIONS.connect_error);
       } finally {
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;

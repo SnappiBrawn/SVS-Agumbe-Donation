@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/* alumni registration popup auto-opens on page load (once per user via localStorage) */
+/* alumni registration popup auto-opens on homepage (re-shown if last shown > 1 week ago) */
 document.addEventListener("DOMContentLoaded", function () {
   const alumniModalEl = document.getElementById("alumniSignupModal");
   if (!alumniModalEl) return;
@@ -85,18 +85,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const isHome = path === "/" || path === "/index.html" || path === "/kn/" || path === "/kn/index.html" || path.endsWith("/index.html");
   if (!isHome) return;
 
-  // Don't display popup if already shown previously
-  if (localStorage.getItem("svs_alumni_popup_shown") === "true") return;
+  const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+  const now = Date.now();
+  const lastShownStr = localStorage.getItem("svs_alumni_popup_last_shown");
 
-  // Record status in localStorage
-  localStorage.setItem("svs_alumni_popup_shown", "true");
+  if (lastShownStr) {
+    const lastShown = parseInt(lastShownStr, 10);
+    if (!isNaN(lastShown) && now - lastShown < ONE_WEEK_MS) {
+      return; // Shown less than 1 week ago, suppress popup
+    }
+  }
+
+  // Update timestamp to now in localStorage
+  localStorage.setItem("svs_alumni_popup_last_shown", now.toString());
 
   const alumniModal = bootstrap.Modal.getOrCreateInstance(alumniModalEl);
   alumniModal.show();
 
   const hideTimer = window.setTimeout(() => {
     alumniModal.hide();
-  }, 10000);
+  }, 7000);
 
   alumniModalEl.addEventListener(
     "hidden.bs.modal",

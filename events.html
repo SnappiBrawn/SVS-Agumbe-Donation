@@ -1,0 +1,96 @@
+---
+layout: default
+permalink: /events
+---
+
+{% assign t = site.data.translations[site.active_lang] %}
+{% assign is_kn = false %}
+{% if site.active_lang == 'kn' %}
+  {% assign is_kn = true %}
+{% endif %}
+
+<div class="py-5 bg-light-custom">
+  <div class="container">
+    <!-- Header Title Section -->
+    <div class="text-center mb-5 max-w-700 mx-auto">
+      <span class="badge bg-primary-custom text-white px-3 py-2 rounded-pill fs-6 mb-2">
+        <i class="bi bi-calendar-event me-1"></i> {{ t.nav.events }}
+      </span>
+      <h1 class="display-5 fw-bold text-primary-custom mb-3">{{ t.events_page.title }}</h1>
+      <p class="lead text-muted fs-5">{{ t.events_page.subtitle }}</p>
+    </div>
+
+    <!-- Events Grid -->
+    {% assign raw_events = site.events %}
+    {% if raw_events and raw_events.size > 0 %}
+      {% assign sorted_events = raw_events | sort: 'event_date' | reverse %}
+    {% else %}
+      {% assign sorted_events = "" | split: "" %}
+    {% endif %}
+    {% if sorted_events.size > 0 %}
+    <div class="row g-4">
+      {% for event in sorted_events %}
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden event-card-hover transition-all">
+          <!-- Thumbnail Image -->
+          {% if event.images and event.images.size > 0 %}
+            <div class="position-relative overflow-hidden" style="height: 220px;">
+              <img src="{{ event.images[0] | relative_url }}" class="card-img-top w-100 h-100 object-fit-cover" alt="{% if is_kn and event.title_kn %}{{ event.title_kn }}{% else %}{{ event.title }}{% endif %}" />
+              <span class="position-absolute top-0 end-0 bg-primary-custom text-white px-3 py-1 m-3 rounded-pill small font-monospace shadow-sm">
+                <i class="bi bi-images me-1"></i>{{ event.images.size }} Photos
+              </span>
+            </div>
+          {% else %}
+            <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 220px;">
+              <i class="bi bi-calendar-event display-4 opacity-50"></i>
+            </div>
+          {% endif %}
+
+          <div class="card-body p-4 d-flex flex-column">
+            <!-- Event Meta Info -->
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+              <small class="text-success-custom fw-bold">
+                <i class="bi bi-calendar3 me-1"></i>
+                {% if is_kn and event.date_display_kn %}{{ event.date_display_kn }}{% else %}{{ event.date_display | default: event.date }}{% endif %}
+              </small>
+            </div>
+
+            <!-- Title -->
+            <h3 class="h5 fw-bold text-primary-custom mb-2">
+              {% if is_kn and event.title_kn %}{{ event.title_kn }}{% else %}{{ event.title }}{% endif %}
+            </h3>
+
+            <!-- Venue -->
+            <p class="text-muted small mb-3">
+              <i class="bi bi-geo-alt-fill text-danger me-1"></i>
+              {% if is_kn and event.venue_kn %}{{ event.venue_kn }}{% else %}{{ event.venue }}{% endif %}
+            </p>
+
+            <!-- Excerpt -->
+            <p class="card-text text-secondary mb-4 flex-grow-1">
+              {% if is_kn and event.description_kn %}
+                {{ event.description_kn | truncatewords: 24 }}
+              {% else %}
+                {{ event.description | truncatewords: 24 }}
+              {% endif %}
+            </p>
+
+            <!-- Action CTA -->
+            <div class="mt-auto">
+              <a href="{{ event.url | relative_url }}" class="btn btn-outline-primary w-100 rounded-pill fw-semibold">
+                {{ t.events_page.view_details }} <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+      <i class="bi bi-calendar-x display-1 text-muted"></i>
+      <h3 class="mt-3 text-muted">{{ t.events_page.no_events }}</h3>
+    </div>
+    {% endif %}
+  </div>
+</div>

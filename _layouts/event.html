@@ -1,0 +1,114 @@
+---
+layout: default
+---
+
+{% assign t = site.data.translations[site.active_lang] %}
+{% assign is_kn = false %}
+{% if site.active_lang == 'kn' %}
+  {% assign is_kn = true %}
+{% endif %}
+
+<div class="py-4 py-md-5 bg-light-custom">
+  <div class="container">
+    <!-- Back to Events Button -->
+    <div class="mb-4">
+      <a href="{{ '/events' | relative_url }}" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+        <i class="bi bi-arrow-left me-1"></i> {{ t.events_page.back_to_events }}
+      </a>
+    </div>
+
+    <!-- Event Detail Card -->
+    <article class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+      <div class="card-body p-4 p-md-5">
+        <!-- Badge & Category -->
+        <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+          <span class="badge bg-primary-custom text-white px-3 py-2 rounded-pill fs-6">
+            <i class="bi bi-calendar3 me-1"></i> 
+            {% if is_kn and page.date_display_kn %}{{ page.date_display_kn }}{% else %}{{ page.date_display | default: page.date }}{% endif %}
+          </span>
+          <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fs-6">
+            <i class="bi bi-geo-alt-fill text-danger me-1"></i> 
+            {% if is_kn and page.venue_kn %}{{ page.venue_kn }}{% else %}{{ page.venue }}{% endif %}
+          </span>
+        </div>
+
+        <!-- Event Title -->
+        <h1 class="display-6 fw-bold text-primary-custom mb-4">
+          {% if is_kn and page.title_kn %}{{ page.title_kn }}{% else %}{{ page.title }}{% endif %}
+        </h1>
+
+        <!-- Image Gallery / Carousel Section -->
+        {% if page.images and page.images.size > 0 %}
+        <div class="event-gallery-section my-4">
+          <h4 class="fw-bold mb-3 text-primary-custom">
+            <i class="bi bi-images me-2 text-success-custom"></i>{{ t.events_page.gallery_heading }}
+          </h4>
+          
+          <!-- Main Showcase & Carousel -->
+          <div id="eventCarousel" class="carousel slide rounded-3 overflow-hidden shadow-sm border mb-3" data-bs-ride="carousel">
+            {% if page.images.size > 1 %}
+            <div class="carousel-indicators">
+              {% for img in page.images %}
+                <button type="button" data-bs-target="#eventCarousel" data-bs-slide-to="{{ forloop.index0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.index }}"></button>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="carousel-inner bg-dark text-center">
+              {% for img in page.images %}
+              <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ img | relative_url }}" class="d-block w-100 event-hero-img" alt="Event Image {{ forloop.index }}" style="max-height: 480px; object-fit: contain; background: #111;" />
+              </div>
+              {% endfor %}
+            </div>
+
+            {% if page.images.size > 1 %}
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            {% endif %}
+          </div>
+
+          <!-- Thumbnail Strip (up to 5 images) -->
+          {% if page.images.size > 1 %}
+          <div class="row g-2">
+            {% for img in page.images %}
+            <div class="col-3 col-md-2">
+              <img src="{{ img | relative_url }}" class="img-thumbnail rounded event-thumb-img cursor-pointer" alt="Thumbnail {{ forloop.index }}" data-bs-target="#eventCarousel" data-bs-slide-to="{{ forloop.index0 }}" style="height: 70px; width: 100%; object-fit: cover; cursor: pointer;" />
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        <hr class="my-4" />
+
+        <!-- Event Description Content -->
+        <div class="event-description fs-5 lh-lg text-dark">
+          {% if is_kn and page.description_kn %}
+            <p>{{ page.description_kn | newline_to_br }}</p>
+          {% elsif page.description %}
+            <p>{{ page.description | newline_to_br }}</p>
+          {% endif %}
+
+          {{ content }}
+        </div>
+
+        <div class="mt-5 pt-3 border-top d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <a href="{{ '/events' | relative_url }}" class="btn btn-cta">
+            <i class="bi bi-arrow-left me-1"></i> {{ t.events_page.back_to_events }}
+          </a>
+          <a href="{{ '/donate' | relative_url }}" class="btn btn-outline-success rounded-pill px-4">
+            <i class="bi bi-heart-fill me-1"></i> {{ t.nav.contribute }}
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

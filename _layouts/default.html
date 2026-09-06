@@ -10,6 +10,7 @@ layout: compress
 
     {% assign t = site.data.translations[site.active_lang] %}
 
+    {% if page.is_home %}
     <div class="modal fade" id="batchCongratsModal" tabindex="-1" aria-labelledby="batchCongratsModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content congrats-modal-card shadow-sm">
@@ -68,6 +69,7 @@ layout: compress
         </div>
       </div>
     </div>
+    {% endif %}
 
     {{content}}
     

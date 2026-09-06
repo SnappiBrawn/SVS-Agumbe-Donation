@@ -35,11 +35,24 @@ parallel_localization: false
 # Directories/files to exclude from being duplicated for each language
 exclude_from_localization: ["assets", "css", "javascript", "CNAME", ".jekyll-cache"]
 
+# Collections
+collections:
+  events:
+    output: true
+    permalink: /events/:path/
+
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-polyglot
+
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - global-builtin
+    - color-functions
+    - import
 
 # Exclude from processing.
 # The following items will not be processed, by default.

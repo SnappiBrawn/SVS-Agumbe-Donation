@@ -86,3 +86,40 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="modalDiningHall" tabindex="-1" aria-labelledby="modalDiningHallLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDiningHallLabel">Newly Constructed Dining Hall</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1)"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div id="carouselDiningHall" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{'/assets/img/construction/DiningHall.jpeg' | relative_url}}" class="d-block w-100" alt="DiningHall" />
+            </div>
+            <div class="carousel-item">
+              <img src="{{'/assets/img/construction/DiningHall2.jpeg' | relative_url}}" class="d-block w-100" alt="DiningHall" />
+            </div>
+            <div class="carousel-item">
+              <video class="d-block w-100" autoplay muted loop>
+                <source src="{{'/assets/img/construction/diningHall.mp4' | relative_url}}" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselDiningHall" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselDiningHall" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

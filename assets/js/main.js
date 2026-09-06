@@ -61,26 +61,35 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 /* batch congrats popup is now opened from the navbar button */
 document.addEventListener("DOMContentLoaded", function () {
-  const modalEl = document.getElementById("batchCongratsModal");
-  if (!modalEl) return;
-
   const triggerButton = document.querySelector("[data-bs-target='#batchCongratsModal']");
   if (!triggerButton) return;
 
-  triggerButton.addEventListener("click", function () {
+  triggerButton.addEventListener("click", function (e) {
+    const modalEl = document.getElementById("batchCongratsModal");
+    if (!modalEl) {
+      // If on a non-home page, navigate to home page
+      window.location.href = (window.siteBase || "") + "/#batchCongratsModal";
+      return;
+    }
     const congratsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
     congratsModal.show();
   });
 });
 
-/* alumni registration popup auto-opens on page load and closes after 5 seconds */
+/* alumni registration popup auto-opens on page load (once per user via localStorage) */
 document.addEventListener("DOMContentLoaded", function () {
   const alumniModalEl = document.getElementById("alumniSignupModal");
   if (!alumniModalEl) return;
 
   const path = window.location.pathname || "";
-  const isHome = path === "/" || path === "/index.html";
+  const isHome = path === "/" || path === "/index.html" || path === "/kn/" || path === "/kn/index.html" || path.endsWith("/index.html");
   if (!isHome) return;
+
+  // Don't display popup if already shown previously
+  if (localStorage.getItem("svs_alumni_popup_shown") === "true") return;
+
+  // Record status in localStorage
+  localStorage.setItem("svs_alumni_popup_shown", "true");
 
   const alumniModal = bootstrap.Modal.getOrCreateInstance(alumniModalEl);
   alumniModal.show();

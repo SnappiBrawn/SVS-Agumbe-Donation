@@ -1,0 +1,12 @@
+- key: diksha
+  url: "https://diksha.gov.in/virtuallabs.html"
+  icon: "bi-flask"
+  accent: "resource-accent-green"
+- key: kannada_deevige
+  url: "https://play.google.com/store/apps/details?id=com.kannada.deevige&pcampaignid=web_share"
+  icon: "bi-phone"
+  accent: "resource-accent-gold"
+- key: kseab
+  url: "https://kseab.karnataka.gov.in/177/Model%20Question%20Paper/en"
+  icon: "bi-file-earmark-text"
+  accent: "resource-accent-blue"

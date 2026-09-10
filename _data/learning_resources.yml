@@ -10,3 +10,11 @@
   url: "https://kseab.karnataka.gov.in/177/Model%20Question%20Paper/en"
   icon: "bi-file-earmark-text"
   accent: "resource-accent-blue"
+- key: kannada_deevige_notes
+  url: "https://kannadadeevige.in/10th-standard-maths-notes/#10th_Maths_Notes_Pdf_in_Kannada_2026"
+  icon: "bi-journal-text"
+  accent: "resource-accent-purple"
+- key: english_guide
+  url: "https://drive.google.com/file/d/1CYvwTs_08RTaTaif7Y5IqY8E_D_vBYkC/view?usp=sharing"
+  icon: "bi-translate"
+  accent: "resource-accent-cyan"

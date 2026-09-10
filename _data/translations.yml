@@ -31,6 +31,10 @@ en:
     kannada_deevige_desc: "A mobile app with Karnataka state syllabus textbook solutions and notes for classes 1 through 10."
     kseab_title: "KSEAB Model Question Papers"
     kseab_desc: "Official Karnataka board model exam papers to help students prepare with trusted formats and question patterns."
+    kannada_deevige_notes_title: "Kannada Deevige (10th Standard Maths Notes)"
+    kannada_deevige_notes_desc: "Chapter-wise Kannada medium mathematics notes, solved examples, and practice guidance for Class 10 students."
+    english_guide_title: "1% English Guide"
+    english_guide_desc: "A practical English-learning guide for students from non-English medium backgrounds, focused on simple grammar and confident speaking habits."
   hero:
     badge: "Phase 1 Renovation in Progress"
     title: "Help Rebuild the Legacy of SVS Agumbe"
@@ -192,6 +196,10 @@ kn:
     kannada_deevige_desc: "1 ರಿಂದ 10ನೇ ತರಗತಿಗಳ ಕರ್ನಾಟಕ ರಾಜ್ಯ ಪಠ್ಯಕ್ರಮದ ಪಠ್ಯಪುಸ್ತಕ ಪರಿಹಾರಗಳು ಮತ್ತು ಟಿಪ್ಪಣಿಗಳನ್ನು ಒದಗಿಸುವ ಮೊಬೈಲ್ ಆಪ್."
     kseab_title: "ಕೆಎಸ್‌ಇಎಬಿ ಮಾದರಿ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು"
     kseab_desc: "ವಿದ್ಯಾರ್ಥಿಗಳು ವಿಶ್ವಾಸಾರ್ಹ ಮಾದರಿ ಮತ್ತು ಪ್ರಶ್ನೆಗಳ ವಿನ್ಯಾಸದೊಂದಿಗೆ ತಯಾರಿ ನಡೆಸಲು ಕರ್ನಾಟಕ ಮಂಡಳಿಯ ಅಧಿಕೃತ ಮಾದರಿ ಪರೀಕ್ಷಾ ಪ್ರಶ್ನೆಪತ್ರಿಕೆಗಳು."
+    kannada_deevige_notes_title: "ಕನ್ನಡ ದೀವಿಗೆ (10ನೇ ತರಗತಿ ಗಣಿತ ಟಿಪ್ಪಣಿಗಳು)"
+    kannada_deevige_notes_desc: "10ನೇ ತರಗತಿವರೆಗಿನ ಕನ್ನಡ ಮಾಧ್ಯಮ गणಿತದ ಅಧ್ಯಾಯವಾರು ಟಿಪ್ಪಣಿಗಳು, ಪರಿಹಾರಗಳೊಂದಿಗೆ ತಯಾರಿ ಮತ್ತು ಅಭ್ಯಾಸ ಮಾರ್ಗದರ್ಶನ."
+    english_guide_title: "1% ಇಂಗ್ಲಿಷ್ ಗೈಡ್"
+    english_guide_desc: "ಇಂಗ್ಲಿಷ್ ಮಧ್ಯಮವಿಲ್ಲದ ವಿದ್ಯಾರ್ಥಿಗಳಿಗಾಗಿ ಬಳಸಲು ಸುಲಭವಾದ ವ್ಯಾಕರಣ ಮತ್ತು ಮಾತುಕತೆಯ ಶೈಲಿಯ ಮೇಲೆ ಕೇಂದ್ರೀಕೃತವಾಗಿರುವ ಪ್ರಾಯೋಗಿಕ ಇಂಗ್ಲಿಷ್ ಕಲಿಕಾ ಮಾರ್ಗದರ್ಶಿ."
   hero:
     badge: "ಹಂತ 1 ರ ನವೀಕರಣ ಪ್ರಗತಿಯಲ್ಲಿದೆ"
     title: "ಎಸ್.ವಿ.ಎಸ್ ಆಗುಂಬೆಯ ಪರಂಪರೆಯನ್ನು ಪುನರ್ನಿರ್ಮಿಸಲು ಸಹಾಯ ಮಾಡಿ"

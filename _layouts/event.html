@@ -48,16 +48,22 @@ layout: default
           <div id="eventCarousel" class="carousel slide rounded-3 overflow-hidden shadow-sm border mb-3" data-bs-ride="carousel">
             {% if page.images.size > 1 %}
             <div class="carousel-indicators">
-              {% for img in page.images %}
+              {% for item in page.images %}
                 <button type="button" data-bs-target="#eventCarousel" data-bs-slide-to="{{ forloop.index0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.index }}"></button>
               {% endfor %}
             </div>
             {% endif %}
 
             <div class="carousel-inner bg-dark text-center">
-              {% for img in page.images %}
+              {% for item in page.images %}
               <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ img | relative_url }}" class="d-block w-100 event-hero-img" alt="Event Image {{ forloop.index }}" style="max-height: 480px; object-fit: contain; background: #111;" />
+                {% if item contains '.mp4' or item contains '.webm' or item contains '.mov' %}
+                  <video class="d-block w-100 event-hero-video" autoplay muted loop playsinline style="max-height: 480px; width: 100%; object-fit: contain; background: #111;">
+                    <source src="{{ item | relative_url }}" type="video/mp4">
+                  </video>
+                {% else %}
+                  <img src="{{ item | relative_url }}" class="d-block w-100 event-hero-img" alt="Event Image {{ forloop.index }}" style="max-height: 480px; object-fit: contain; background: #111;" />
+                {% endif %}
               </div>
               {% endfor %}
             </div>
@@ -74,12 +80,16 @@ layout: default
             {% endif %}
           </div>
 
-          <!-- Thumbnail Strip (up to 5 images) -->
+          <!-- Thumbnail Strip -->
           {% if page.images.size > 1 %}
           <div class="row g-2">
-            {% for img in page.images %}
+            {% for item in page.images %}
             <div class="col-3 col-md-2">
-              <img src="{{ img | relative_url }}" class="img-thumbnail rounded event-thumb-img cursor-pointer" alt="Thumbnail {{ forloop.index }}" data-bs-target="#eventCarousel" data-bs-slide-to="{{ forloop.index0 }}" style="height: 70px; width: 100%; object-fit: cover; cursor: pointer;" />
+              {% if item contains '.mp4' or item contains '.webm' or item contains '.mov' %}
+                <video class="img-thumbnail rounded event-thumb-img cursor-pointer" muted playsinline loop data-bs-target="#eventCarousel" data-bs-slide-to="{{ forloop.index0 }}" style="height: 70px; width: 100%; object-fit: cover; cursor: pointer; background: #111;" aria-label="Thumbnail {{ forloop.index }}"></video>
+              {% else %}
+                <img src="{{ item | relative_url }}" class="img-thumbnail rounded event-thumb-img cursor-pointer" alt="Thumbnail {{ forloop.index }}" data-bs-target="#eventCarousel" data-bs-slide-to="{{ forloop.index0 }}" style="height: 70px; width: 100%; object-fit: cover; cursor: pointer;" />
+              {% endif %}
             </div>
             {% endfor %}
           </div>

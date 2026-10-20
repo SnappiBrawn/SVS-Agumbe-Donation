@@ -18,3 +18,7 @@
   url: "https://drive.google.com/file/d/1CYvwTs_08RTaTaif7Y5IqY8E_D_vBYkC/view?usp=sharing"
   icon: "bi-translate"
   accent: "resource-accent-cyan"
+- key: harsha_blog
+  url: "https://harshamysorian.blogspot.com/p/school-programmes.html"
+  icon: "bi-lightbulb"
+  accent: "resource-accent-indigo"
